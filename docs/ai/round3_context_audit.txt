@@ -1,0 +1,1211 @@
+================================================================================
+ROUND 3 ORGANIZATION + DESCRIPTION CONTEXT AUDIT
+================================================================================
+Total mismatches: 127
+
+--------------------------------------------------------------------------------
+ERROR 1
+INPUT:
+Kavita ke मीटिंग ka wait hai फोन करना है अगले महीने
+
+DESCRIPTION:
+  Expected : 'retail supply'
+  Predicted: 'insurance claim'
+
+--------------------------------------------------------------------------------
+ERROR 2
+INPUT:
+Amit ke documents स्थिति देखनी है Rs. 50,000 message karna hai Friday
+
+DESCRIPTION:
+  Expected : 'website development'
+  Predicted: 'plumbing work'
+
+--------------------------------------------------------------------------------
+ERROR 3
+INPUT:
+Celebration Studio ke admission fee ka ऑर्डर status dekhna hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Celebration Studio'
+
+--------------------------------------------------------------------------------
+ERROR 4
+INPUT:
+Amit ke liye painting material ka document कैंसल हो गया है mail karni hai शनिवार
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'ABC Construction'
+
+--------------------------------------------------------------------------------
+ERROR 5
+INPUT:
+Rohit ke visit ka wait hai Rs. 100,000
+
+DESCRIPTION:
+  Expected : 'warehouse dispatch'
+  Predicted: 'insurance claim'
+
+--------------------------------------------------------------------------------
+ERROR 6
+INPUT:
+Sunrise Interiors ke Anjali ke office renovation ka कॉल भेज दिया है Rs. 120,000 मैसेज करना है 2 days later
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Sunrise Interiors'
+
+--------------------------------------------------------------------------------
+ERROR 7
+INPUT:
+Neha ke liye admission fee ka काम कैंसल कर दिया है
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Bright Homes'
+
+--------------------------------------------------------------------------------
+ERROR 8
+INPUT:
+Sanjay ke decoration material ka सेवा cancelled hai ईमेल भेजनी है अगले महीने
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'HomeEase Services'
+
+--------------------------------------------------------------------------------
+ERROR 9
+INPUT:
+Greenfield Academy ke Priya ke policy renewal ka complaint कैंसल कर दिया है
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Greenfield Academy'
+
+--------------------------------------------------------------------------------
+ERROR 10
+INPUT:
+Neha ke service ka wait hai
+
+DESCRIPTION:
+  Expected : 'policy renewal'
+  Predicted: 'office renovation'
+
+--------------------------------------------------------------------------------
+ERROR 11
+INPUT:
+Meera ke training package ka payment स्थिति देखनी है
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'SecureLife Insurance'
+
+--------------------------------------------------------------------------------
+ERROR 12
+INPUT:
+Kavita ke quote ka wait hai Rs. 120,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'LedgerWorks'
+
+DESCRIPTION:
+  Expected : 'software proposal'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 13
+INPUT:
+Vikas ke liye website development ka project complete ho gaya hai फोन करना है अगले हफ्ते
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'City Care Services'
+
+--------------------------------------------------------------------------------
+ERROR 14
+INPUT:
+Vikas ke website development ka service ka kya update hai?
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'City Care Services'
+
+--------------------------------------------------------------------------------
+ERROR 15
+INPUT:
+Ramesh ke प्रपोज़ल ka wait hai Rs. 50,000
+
+DESCRIPTION:
+  Expected : 'spoken English course'
+  Predicted: 'training package'
+
+--------------------------------------------------------------------------------
+ERROR 16
+INPUT:
+Amit ke liye washing machine repair ka कॉल cancel kar diya hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'ABC Construction'
+
+--------------------------------------------------------------------------------
+ERROR 17
+INPUT:
+Neha ke training package ka प्रपोज़ल send karna hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Bright Homes'
+
+--------------------------------------------------------------------------------
+ERROR 18
+INPUT:
+Sanjay ke software proposal ka विज़िट कर दिया है WhatsApp pe ping karna hai अगले महीने
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'HomeEase Services'
+
+--------------------------------------------------------------------------------
+ERROR 19
+INPUT:
+Priya ke liye decoration material ka work ka plan hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Greenfield Academy'
+
+--------------------------------------------------------------------------------
+ERROR 20
+INPUT:
+Sanjay ke प्रपोज़ल ka wait hai message karna hai 3 days later
+
+DESCRIPTION:
+  Expected : 'office renovation'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 21
+INPUT:
+Sanjay ke visit ka status kya hai?
+
+DESCRIPTION:
+  Expected : 'interior design'
+  Predicted: 'office renovation'
+
+--------------------------------------------------------------------------------
+ERROR 22
+INPUT:
+City Care Services ke car servicing ka document का स्टेटस क्या है?
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'City Care Services'
+
+--------------------------------------------------------------------------------
+ERROR 23
+INPUT:
+Meera ke decoration material ka quote पूरा हो गया है मैसेज करना है आज
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'SecureLife Insurance'
+
+--------------------------------------------------------------------------------
+ERROR 24
+INPUT:
+Sanjay ke liye training package ka सेवा कैंसल कर दिया है फोन करना है कल
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'HomeEase Services'
+
+--------------------------------------------------------------------------------
+ERROR 25
+INPUT:
+Nova Solutions ka washing machine repair प्रोजेक्ट अभी तक नहीं हुआ
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Nova Solutions'
+
+--------------------------------------------------------------------------------
+ERROR 26
+INPUT:
+Anjali ke mail update dekhna hai message karna hai Friday
+
+DESCRIPTION:
+  Expected : 'website development'
+  Predicted: 'office renovation'
+
+--------------------------------------------------------------------------------
+ERROR 27
+INPUT:
+Mehta Legal ke decoration material ka order update dekhna hai email karni hai अगले महीने
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Mehta Legal'
+
+--------------------------------------------------------------------------------
+ERROR 28
+INPUT:
+Sunrise Interiors ke Anjali ke warehouse dispatch ka सेवा कैंसल कर दिया है Rs. 50,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Sunrise Interiors'
+
+--------------------------------------------------------------------------------
+ERROR 29
+INPUT:
+Anjali ke quotation ki situation kya hai?
+
+DESCRIPTION:
+  Expected : 'software proposal'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 30
+INPUT:
+Gupta Traders ke Gupta ji ke wiring maintenance ka डिलीवरी planned hai Rs. 120,000 call karna hai शनिवार
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+--------------------------------------------------------------------------------
+ERROR 31
+INPUT:
+SecureLife Insurance ke Meera ke website development ka मीटिंग कैंसल कर दिया है
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'SecureLife Insurance'
+
+--------------------------------------------------------------------------------
+ERROR 32
+INPUT:
+Vikas ke order ki situation kya hai? mail karni hai कल
+
+DESCRIPTION:
+  Expected : 'admission fee'
+  Predicted: 'plumbing work'
+
+--------------------------------------------------------------------------------
+ERROR 33
+INPUT:
+Neha ke proposal ka wait hai
+
+DESCRIPTION:
+  Expected : 'training package'
+  Predicted: 'office renovation'
+
+--------------------------------------------------------------------------------
+ERROR 34
+INPUT:
+Gupta ji ke liye insurance claim ka mail कैंसल कर दिया है message karna hai सोमवार
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+--------------------------------------------------------------------------------
+ERROR 35
+INPUT:
+Greenfield Academy ke Priya ke wedding photography ka call mil gaya hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Greenfield Academy'
+
+--------------------------------------------------------------------------------
+ERROR 36
+INPUT:
+RK Electricals ke 2BHK flat ka message update dekhna hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'RK Electricals'
+
+--------------------------------------------------------------------------------
+ERROR 37
+INPUT:
+Mehta Legal ke painting material ka अपॉइंटमेंट का क्या अपडेट है? Rs. 150,000 मैसेज करना है सोमवार
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Mehta Legal'
+
+--------------------------------------------------------------------------------
+ERROR 38
+INPUT:
+Gupta ji ke liye website development ka प्रोजेक्ट कर दिया है मैसेज करना है आज
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+--------------------------------------------------------------------------------
+ERROR 39
+INPUT:
+Gupta ji ke proposal स्थिति देखनी है message karna hai 3 days later
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+DESCRIPTION:
+  Expected : '2BHK flat'
+  Predicted: 'plumbing work'
+
+--------------------------------------------------------------------------------
+ERROR 40
+INPUT:
+Kavita ke call ka wait hai
+
+DESCRIPTION:
+  Expected : 'interior design'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 41
+INPUT:
+Kavita ke liye contract review ka meeting cancel kar diya hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'LedgerWorks'
+
+--------------------------------------------------------------------------------
+ERROR 42
+INPUT:
+Sonia ke liye software proposal ka appointment ka plan hai mail karni hai अगले हफ्ते
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Celebration Studio'
+
+--------------------------------------------------------------------------------
+ERROR 43
+INPUT:
+SecureLife Insurance ke Meera ke plumbing work ka order cancel ho gaya hai Rs. 25,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'SecureLife Insurance'
+
+--------------------------------------------------------------------------------
+ERROR 44
+INPUT:
+Vertex Motors ke warehouse dispatch ka quotation ka ki situation kya hai? Rs. 5,000 ईमेल भेजनी है आज
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Vertex Motors'
+
+--------------------------------------------------------------------------------
+ERROR 45
+INPUT:
+Sonia ke liye insurance claim ka complaint कर दिया है mail karni hai अगले महीने
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Celebration Studio'
+
+--------------------------------------------------------------------------------
+ERROR 46
+INPUT:
+Sanjay ke message update dekhna hai Rs. 150,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'HomeEase Services'
+
+DESCRIPTION:
+  Expected : '2BHK flat'
+  Predicted: 'car servicing'
+
+--------------------------------------------------------------------------------
+ERROR 47
+INPUT:
+Bright Homes ka painting material payment ka wait hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Bright Homes'
+
+--------------------------------------------------------------------------------
+ERROR 48
+INPUT:
+Rohit ke visit ki situation kya hai?
+
+DESCRIPTION:
+  Expected : 'training package'
+  Predicted: 'office renovation'
+
+--------------------------------------------------------------------------------
+ERROR 49
+INPUT:
+Neha ke message update dekhna hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Bright Homes'
+
+DESCRIPTION:
+  Expected : 'spoken English course'
+  Predicted: 'car servicing'
+
+--------------------------------------------------------------------------------
+ERROR 50
+INPUT:
+Priya ke painting material ka documents mil gaya hai message karna hai next Monday
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Greenfield Academy'
+
+--------------------------------------------------------------------------------
+ERROR 51
+INPUT:
+Pankaj ke liye interior design ka quote karna hai kal WhatsApp pe ping karna hai next Monday
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Orbit Logistics'
+
+--------------------------------------------------------------------------------
+ERROR 52
+INPUT:
+Vikas ke meeting ka wait hai Rs. 75,000 message karna hai 3 days later
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'City Care Services'
+
+DESCRIPTION:
+  Expected : 'software proposal'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 53
+INPUT:
+Anjali ke visit ka wait hai Rs. 100,000 email karni hai कल
+
+DESCRIPTION:
+  Expected : 'painting material'
+  Predicted: 'office renovation'
+
+--------------------------------------------------------------------------------
+ERROR 54
+INPUT:
+Neha ke liye plumbing work ka quotation ka ka plan hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Bright Homes'
+
+--------------------------------------------------------------------------------
+ERROR 55
+INPUT:
+Kavita ke delivery update dekhna hai
+
+DESCRIPTION:
+  Expected : 'contract review'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 56
+INPUT:
+Arjun ke liye 2BHK flat ka शिकायत planned hai ईमेल भेजनी है next Monday
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Mehta Legal'
+
+--------------------------------------------------------------------------------
+ERROR 57
+INPUT:
+Gupta ji ke liye insurance claim ka काम कर दिया है Rs. 100,000 mail karni hai next Monday
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+--------------------------------------------------------------------------------
+ERROR 58
+INPUT:
+Arjun ke message स्थिति देखनी है Rs. 10,000 mail karni hai Friday
+
+DESCRIPTION:
+  Expected : 'painting material'
+  Predicted: 'warehouse dispatch'
+
+--------------------------------------------------------------------------------
+ERROR 59
+INPUT:
+Anjali ke liye wiring maintenance ka email bhejna hai Rs. 100,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Sunrise Interiors'
+
+--------------------------------------------------------------------------------
+ERROR 60
+INPUT:
+Arjun ke policy renewal ka appointment kar diya hai Rs. 5,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Mehta Legal'
+
+--------------------------------------------------------------------------------
+ERROR 61
+INPUT:
+RK Electricals ke Ramesh ke 2BHK flat ka कोटेशन sent Rs. 75,000 फोन करना है अगले हफ्ते
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'RK Electricals'
+
+--------------------------------------------------------------------------------
+ERROR 62
+INPUT:
+Rohit ke proposal ka wait hai Rs. 5,000 email karni hai अगले महीने
+
+DESCRIPTION:
+  Expected : 'retail supply'
+  Predicted: 'admission fee'
+
+--------------------------------------------------------------------------------
+ERROR 63
+INPUT:
+Neha ke policy renewal ka payment ka status dekhna hai Rs. 10,000 मैसेज करना है 3 days later
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Bright Homes'
+
+--------------------------------------------------------------------------------
+ERROR 64
+INPUT:
+Amit ke ऑर्डर ka wait hai ईमेल भेजनी है कल
+
+DESCRIPTION:
+  Expected : 'contract review'
+  Predicted: 'warehouse dispatch'
+
+--------------------------------------------------------------------------------
+ERROR 65
+INPUT:
+Rohit ke admission fee ka प्रपोज़ल bhejna hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Vertex Motors'
+
+--------------------------------------------------------------------------------
+ERROR 66
+INPUT:
+Amit ke विज़िट स्थिति देखनी है message karna hai कल
+
+DESCRIPTION:
+  Expected : 'policy renewal'
+  Predicted: 'plumbing work'
+
+--------------------------------------------------------------------------------
+ERROR 67
+INPUT:
+Sunrise Interiors ke policy renewal ka project status dekhna hai Rs. 10,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Sunrise Interiors'
+
+--------------------------------------------------------------------------------
+ERROR 68
+INPUT:
+Nova Solutions ke spoken English course ka प्रपोज़ल ka kya update hai? Rs. 150,000 फोन करना है अगले महीने
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Nova Solutions'
+
+--------------------------------------------------------------------------------
+ERROR 69
+INPUT:
+Sonia ke डॉक्यूमेंट स्थिति देखनी है Rs. 10,000 WhatsApp pe ping karna hai next Monday
+
+DESCRIPTION:
+  Expected : 'retail supply'
+  Predicted: 'warehouse dispatch'
+
+--------------------------------------------------------------------------------
+ERROR 70
+INPUT:
+Ramesh ke painting material ka visit का प्लान है
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'RK Electricals'
+
+--------------------------------------------------------------------------------
+ERROR 71
+INPUT:
+Meera ke liye washing machine repair ka complaint kar diya hai Rs. 100,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'SecureLife Insurance'
+
+--------------------------------------------------------------------------------
+ERROR 72
+INPUT:
+Sonia ke update ka wait hai Rs. 150,000
+
+DESCRIPTION:
+  Expected : '2BHK flat'
+  Predicted: 'training package'
+
+--------------------------------------------------------------------------------
+ERROR 73
+INPUT:
+Rahul ke work ka kya update hai? Rs. 25,000 ईमेल भेजनी है 2 days later
+
+DESCRIPTION:
+  Expected : 'plumbing work'
+  Predicted: 'training package'
+
+--------------------------------------------------------------------------------
+ERROR 74
+INPUT:
+Amit ke proposal update dekhna hai
+
+DESCRIPTION:
+  Expected : 'interior design'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 75
+INPUT:
+Rohit ke liye retail supply ka शिकायत भेजना है Rs. 25,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Vertex Motors'
+
+--------------------------------------------------------------------------------
+ERROR 76
+INPUT:
+Meera ke ईमेल ka wait hai message karna hai शनिवार
+
+DESCRIPTION:
+  Expected : 'interior design'
+  Predicted: 'insurance claim'
+
+--------------------------------------------------------------------------------
+ERROR 77
+INPUT:
+Pankaj ke कॉल का स्टेटस क्या है? email karni hai कल
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Orbit Logistics'
+
+DESCRIPTION:
+  Expected : 'washing machine repair'
+  Predicted: 'plumbing work'
+
+--------------------------------------------------------------------------------
+ERROR 78
+INPUT:
+Sanjay ke visit ka wait hai Rs. 50,000
+
+DESCRIPTION:
+  Expected : 'plumbing work'
+  Predicted: 'insurance claim'
+
+--------------------------------------------------------------------------------
+ERROR 79
+INPUT:
+Mehta Legal ke Arjun ke website development ka कॉल कैंसल कर दिया है call karna hai 3 days later
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Mehta Legal'
+
+--------------------------------------------------------------------------------
+ERROR 80
+INPUT:
+Rohit ke wedding photography ka अपॉइंटमेंट kar diya hai Rs. 100,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Vertex Motors'
+
+--------------------------------------------------------------------------------
+ERROR 81
+INPUT:
+Ramesh ke सेवा ka wait hai Rs. 150,000 मैसेज करना है शनिवार
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'RK Electricals'
+
+DESCRIPTION:
+  Expected : 'office renovation'
+  Predicted: 'warehouse dispatch'
+
+--------------------------------------------------------------------------------
+ERROR 82
+INPUT:
+Meera ke call ka wait hai Rs. 10,000 मैसेज करना है सोमवार
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'SecureLife Insurance'
+
+DESCRIPTION:
+  Expected : 'office renovation'
+  Predicted: 'insurance claim'
+
+--------------------------------------------------------------------------------
+ERROR 83
+INPUT:
+Rohit ke documents ka wait hai Rs. 120,000 WhatsApp pe ping karna hai शनिवार
+
+DESCRIPTION:
+  Expected : 'contract review'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 84
+INPUT:
+Rohit ke meeting update dekhna hai Rs. 50,000 message karna hai next Monday
+
+DESCRIPTION:
+  Expected : 'decoration material'
+  Predicted: '2BHK flat'
+
+--------------------------------------------------------------------------------
+ERROR 85
+INPUT:
+Arjun ke liye painting material ka project mil gaya hai Rs. 150,000 mail karni hai Friday
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Mehta Legal'
+
+--------------------------------------------------------------------------------
+ERROR 86
+INPUT:
+Bright Homes ke Neha ke car servicing ka service कर दिया है mail karni hai अगले महीने
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Bright Homes'
+
+--------------------------------------------------------------------------------
+ERROR 87
+INPUT:
+Ramesh ke insurance claim ka order cancelled hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'RK Electricals'
+
+--------------------------------------------------------------------------------
+ERROR 88
+INPUT:
+Gupta ji ke appointment ka wait hai Rs. 50,000
+
+DESCRIPTION:
+  Expected : 'software proposal'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 89
+INPUT:
+Anjali ke liye plumbing work ka meeting bhejna hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Sunrise Interiors'
+
+--------------------------------------------------------------------------------
+ERROR 90
+INPUT:
+Anjali ke document ki situation kya hai?
+
+DESCRIPTION:
+  Expected : '2BHK flat'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 91
+INPUT:
+ABC Construction ka policy renewal मैसेज अभी तक नहीं हुआ ईमेल भेजनी है 2 days later
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'ABC Construction'
+
+--------------------------------------------------------------------------------
+ERROR 92
+INPUT:
+City Care Services ke Vikas ke plumbing work ka payment पूरा हो गया है फोन करना है next Monday
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'City Care Services'
+
+--------------------------------------------------------------------------------
+ERROR 93
+INPUT:
+Anjali ke liye painting material ka appointment kar diya hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Sunrise Interiors'
+
+--------------------------------------------------------------------------------
+ERROR 94
+INPUT:
+Pankaj ke meeting ka wait hai Rs. 100,000 फोन करना है अगले हफ्ते
+
+DESCRIPTION:
+  Expected : 'spoken English course'
+  Predicted: 'insurance claim'
+
+--------------------------------------------------------------------------------
+ERROR 95
+INPUT:
+Kavita ke washing machine repair ka project mil gaya hai Rs. 75,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'LedgerWorks'
+
+--------------------------------------------------------------------------------
+ERROR 96
+INPUT:
+RK Electricals ke Ramesh ke website development ka शिकायत ka plan hai phone karna hai सोमवार
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'RK Electricals'
+
+--------------------------------------------------------------------------------
+ERROR 97
+INPUT:
+Kavita ke ईमेल ka status kya hai? WhatsApp pe ping karna hai शनिवार
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'LedgerWorks'
+
+--------------------------------------------------------------------------------
+ERROR 98
+INPUT:
+Gupta ji ke ऑर्डर status dekhna hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+DESCRIPTION:
+  Expected : 'wiring maintenance'
+  Predicted: 'plumbing work'
+
+--------------------------------------------------------------------------------
+ERROR 99
+INPUT:
+Anjali ke documents ka wait hai
+
+DESCRIPTION:
+  Expected : 'insurance claim'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 100
+INPUT:
+Gupta Traders ke Gupta ji ke software proposal ka proposal bhejna hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+--------------------------------------------------------------------------------
+ERROR 101
+INPUT:
+Rohit ke call ka wait hai फोन करना है कल
+
+DESCRIPTION:
+  Expected : 'decoration material'
+  Predicted: 'training package'
+
+--------------------------------------------------------------------------------
+ERROR 102
+INPUT:
+Sonia ke liye policy renewal ka कोटेशन कैंसल कर दिया है Rs. 120,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Celebration Studio'
+
+--------------------------------------------------------------------------------
+ERROR 103
+INPUT:
+HomeEase Services ke Sanjay ke wiring maintenance ka payment कैंसल हो गया है Rs. 150,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'HomeEase Services'
+
+--------------------------------------------------------------------------------
+ERROR 104
+INPUT:
+Rohit ke प्रपोज़ल update dekhna hai फोन करना है कल
+
+DESCRIPTION:
+  Expected : 'interior design'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 105
+INPUT:
+Priya ke सेवा ka kya update hai? Rs. 10,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Greenfield Academy'
+
+DESCRIPTION:
+  Expected : 'warehouse dispatch'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 106
+INPUT:
+Neha ke service ka wait hai Rs. 25,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Bright Homes'
+
+DESCRIPTION:
+  Expected : 'insurance claim'
+  Predicted: '2BHK flat'
+
+--------------------------------------------------------------------------------
+ERROR 107
+INPUT:
+Priya ke मैसेज ki situation kya hai?
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Greenfield Academy'
+
+DESCRIPTION:
+  Expected : 'wedding photography'
+  Predicted: 'office renovation'
+
+--------------------------------------------------------------------------------
+ERROR 108
+INPUT:
+ABC Construction ke Amit ke office renovation ka ऑर्डर mil gaya hai Rs. 5,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'ABC Construction'
+
+--------------------------------------------------------------------------------
+ERROR 109
+INPUT:
+Sanjay ke call ka wait hai Rs. 75,000 call karna hai अगले महीने
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'HomeEase Services'
+
+DESCRIPTION:
+  Expected : 'spoken English course'
+  Predicted: 'insurance claim'
+
+--------------------------------------------------------------------------------
+ERROR 110
+INPUT:
+Sunrise Interiors ke Anjali ke 2BHK flat ka payment ka cancel kar diya hai Rs. 100,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Sunrise Interiors'
+
+--------------------------------------------------------------------------------
+ERROR 111
+INPUT:
+Gupta ji ke liye 2BHK flat ka सेवा completed mail karni hai Friday
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+--------------------------------------------------------------------------------
+ERROR 112
+INPUT:
+Gupta Traders ke Gupta ji ke spoken English course ka शिकायत cancel ho gaya hai phone karna hai सोमवार
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+--------------------------------------------------------------------------------
+ERROR 113
+INPUT:
+Rohit ke liye training package ka कॉल karna hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Vertex Motors'
+
+--------------------------------------------------------------------------------
+ERROR 114
+INPUT:
+Ramesh ke wiring maintenance ka quote ka status kya hai?
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'RK Electricals'
+
+--------------------------------------------------------------------------------
+ERROR 115
+INPUT:
+Amit ke liye insurance claim ka appointment कैंसल हो गया है Rs. 25,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'ABC Construction'
+
+--------------------------------------------------------------------------------
+ERROR 116
+INPUT:
+Vikas ke विज़िट ka wait hai
+
+DESCRIPTION:
+  Expected : 'decoration material'
+  Predicted: 'office renovation'
+
+--------------------------------------------------------------------------------
+ERROR 117
+INPUT:
+Orbit Logistics ka training package work का इंतजार है
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Orbit Logistics'
+
+--------------------------------------------------------------------------------
+ERROR 118
+INPUT:
+Rohit ke कोटेशन ka wait hai Rs. 100,000 phone karna hai Friday
+
+DESCRIPTION:
+  Expected : 'software proposal'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 119
+INPUT:
+Sanjay ke work स्थिति देखनी है Rs. 50,000
+
+DESCRIPTION:
+  Expected : 'painting material'
+  Predicted: 'training package'
+
+--------------------------------------------------------------------------------
+ERROR 120
+INPUT:
+Vikas ke order ka wait hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'City Care Services'
+
+DESCRIPTION:
+  Expected : 'contract review'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 121
+INPUT:
+ABC Construction ke Amit ke office renovation ka delivery canceled mail karni hai 3 days later
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'ABC Construction'
+
+--------------------------------------------------------------------------------
+ERROR 122
+INPUT:
+Sonia ka contract review meeting waiting hai Rs. 120,000
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Celebration Studio'
+
+--------------------------------------------------------------------------------
+ERROR 123
+INPUT:
+Gupta ji ke मीटिंग ka wait hai
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Gupta Traders'
+
+DESCRIPTION:
+  Expected : 'spoken English course'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 124
+INPUT:
+Pankaj ke liye spoken English course ka शिकायत कैंसल कर दिया है
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Orbit Logistics'
+
+--------------------------------------------------------------------------------
+ERROR 125
+INPUT:
+HomeEase Services ke Sanjay ke wiring maintenance ka meeting ka plan hai email karni hai 2 days later
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'HomeEase Services'
+
+--------------------------------------------------------------------------------
+ERROR 126
+INPUT:
+Priya ke अपॉइंटमेंट ka wait hai call karna hai अगले महीने
+
+DESCRIPTION:
+  Expected : 'spoken English course'
+  Predicted: 'website development'
+
+--------------------------------------------------------------------------------
+ERROR 127
+INPUT:
+Greenfield Academy ke Priya ke admission fee ka payment भेज दिया है WhatsApp pe ping karna hai कल
+
+ORGANIZATION:
+  Expected : None
+  Predicted: 'Greenfield Academy'
+
+================================================================================
+END
+================================================================================

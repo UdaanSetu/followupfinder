@@ -1,0 +1,181 @@
+# ============================================================
+# FollowUpFinder - Git Ignore
+# ============================================================
+
+# ------------------------------------------------------------
+# Python
+# ------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+.eggs/
+*.egg-info/
+dist/
+build/
+
+
+# ------------------------------------------------------------
+# Virtual environments
+# ------------------------------------------------------------
+.venv/
+venv/
+env/
+env.bak/
+venv.bak/
+
+
+# ------------------------------------------------------------
+# Node / Frontend
+# ------------------------------------------------------------
+node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/.next/
+frontend/coverage/
+
+.npm/
+.yarn/
+.pnpm-store/
+
+
+# ------------------------------------------------------------
+# IDE / Editor
+# ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+
+# ------------------------------------------------------------
+# OS files
+# ------------------------------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+
+# ------------------------------------------------------------
+# Logs / Temporary files
+# ------------------------------------------------------------
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.orig
+
+
+# ------------------------------------------------------------
+# Environment files / Secrets / Credentials
+# ------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.p12
+*.pfx
+
+secrets/
+credentials/
+
+
+# ------------------------------------------------------------
+# MongoDB local database files
+# ------------------------------------------------------------
+*.wt
+*.wt.lock
+
+mongodb-data/
+mongo-data/
+database/data/
+
+
+# ------------------------------------------------------------
+# Model / Framework caches
+# ------------------------------------------------------------
+.cache/
+.cache/**
+.huggingface/
+.cache/huggingface/
+.cache/torch/
+.cache/transformers/
+
+transformers_cache/
+model_cache/
+models--*/
+
+
+# ------------------------------------------------------------
+# AI BASE MODEL
+# Large local-only Qwen model
+# ------------------------------------------------------------
+ai/inference/models/Qwen3-0.6B/
+
+
+# ------------------------------------------------------------
+# AI TRAINED MODEL ADAPTERS
+# Keep trained LoRA weights outside normal Git commits
+#
+# This automatically protects:
+#   lora_full_gpu/
+#   lora_gpu_smoke/
+#   lora_round2_gpu/
+#   lora_round3_gpu/
+#   lora_round4_gpu/
+#   future adapters...
+# ------------------------------------------------------------
+ai/adapters/
+
+
+# ------------------------------------------------------------
+# Training checkpoints / generated training artifacts
+# ------------------------------------------------------------
+**/checkpoint-*/
+**/checkpoints/
+
+*.ckpt
+*.safetensors.tmp
+*.pt.tmp
+*.pth.tmp
+
+training_runs/
+runs/
+wandb/
+mlruns/
+
+
+# ------------------------------------------------------------
+# GPU / CUDA caches
+# ------------------------------------------------------------
+.nv/
+.cuda/
+CUDA_CACHE_PATH/
+
+*.cubin
+*.fatbin
+
+
+# ------------------------------------------------------------
+# Generated temporary files
+# ------------------------------------------------------------
+*.pid
+*.seed
+*.lock
