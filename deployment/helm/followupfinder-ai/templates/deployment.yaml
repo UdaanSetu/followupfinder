@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+
+spec:
+  replicas: {{ .Values.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+
+    spec:
+      containers:
+        - name: {{ .Release.Name }}
+
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+
+          envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-config
+
+          volumeMounts:
+            - name: qwen-model
+              mountPath: /models/Qwen3-0.6B
+              readOnly: true
+
+            - name: lora-adapter
+              mountPath: /models/lora-round3
+              readOnly: true
+
+      volumes:
+        - name: qwen-model
+          hostPath:
+            path: {{ .Values.models.baseModelHostPath }}
+            type: Directory
+
+        - name: lora-adapter
+          hostPath:
+            path: {{ .Values.models.adapterHostPath }}
+            type: Directory

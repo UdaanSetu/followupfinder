@@ -179,3 +179,9 @@ CUDA_CACHE_PATH/
 *.pid
 *.seed
 *.lock
+# Local Kubernetes / k3d recovery artifacts
+etcd-v3.5.9-linux-amd64/
+etcd_certs/
+fix_all_ips.sh
+fix_ips.sh
+recover.sh

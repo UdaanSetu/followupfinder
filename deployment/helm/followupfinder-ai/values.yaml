@@ -1,0 +1,20 @@
+replicaCount: 2
+
+image:
+  repository: followupfinder-registry:5000/followupfinder-ai
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 8000
+  targetPort: 8000
+
+ai:
+  device: cpu
+  baseModelPath: /models/Qwen3-0.6B
+  adapterPath: /models/lora-round3
+
+models:
+  baseModelHostPath: /models/Qwen3-0.6B
+  adapterHostPath: /models/lora-round3

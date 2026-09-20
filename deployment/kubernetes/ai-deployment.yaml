@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: followupfinder-ai
+  namespace: followupfinder
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: followupfinder-ai
+
+  template:
+    metadata:
+      labels:
+        app: followupfinder-ai
+
+    spec:
+      containers:
+        - name: followupfinder-ai
+
+          image: followupfinder-registry:5000/followupfinder-ai:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 8000
+
+          envFrom:
+            - configMapRef:
+                name: followupfinder-ai-config
+
+          volumeMounts:
+            - name: qwen-model
+              mountPath: /models/Qwen3-0.6B
+              readOnly: true
+
+            - name: lora-adapter
+              mountPath: /models/lora-round3
+              readOnly: true
+
+      volumes:
+        - name: qwen-model
+          hostPath:
+            path: /models/Qwen3-0.6B
+            type: Directory
+
+        - name: lora-adapter
+          hostPath:
+            path: /models/lora-round3
+            type: Directory
