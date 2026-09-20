@@ -6,16 +6,23 @@ pipeline {
         stage('AI Tests') {
             steps {
                 sh '''
-                    cat << 'EOF' > ai/Dockerfile.test
+                    cp -r ai ai_test_build
+                    rm -f ai_test_build/.dockerignore
+                    cat << 'EOF' > ai_test_build/Dockerfile.test
 FROM python:3.11-slim
 WORKDIR /app
 COPY . /app/ai
 RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu -r /app/ai/requirements.txt -r /app/ai/service-requirements.txt pytest
 CMD ["python", "-m", "pytest", "ai/tests/"]
 EOF
-                    docker build -f ai/Dockerfile.test -t followupfinder-ai-test:${BUILD_NUMBER} ai
+                    docker build -f ai_test_build/Dockerfile.test -t followupfinder-ai-test:${BUILD_NUMBER} ai_test_build
                     docker run --rm followupfinder-ai-test:${BUILD_NUMBER}
                 '''
+            }
+            post {
+                always {
+                    sh 'rm -rf ai_test_build || true'
+                }
             }
         }
 
