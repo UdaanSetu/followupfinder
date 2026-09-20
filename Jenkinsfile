@@ -6,10 +6,15 @@ pipeline {
         stage('AI Tests') {
             steps {
                 sh '''
-                    docker run --rm \
-                      -v "$WORKSPACE/ai:/app" \
-                      python:3.11-slim \
-                      sh -c "cd /app && pip install --no-cache-dir -r /app/requirements.txt -r /app/service-requirements.txt pytest && python -m pytest /app/tests/"
+                    cat << 'EOF' > ai/Dockerfile.test
+FROM python:3.11-slim
+WORKDIR /app
+COPY . /app/ai
+RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu -r /app/ai/requirements.txt -r /app/ai/service-requirements.txt pytest
+CMD ["python", "-m", "pytest", "ai/tests/"]
+EOF
+                    docker build -f ai/Dockerfile.test -t followupfinder-ai-test:${BUILD_NUMBER} ai
+                    docker run --rm followupfinder-ai-test:${BUILD_NUMBER}
                 '''
             }
         }
@@ -31,6 +36,10 @@ pipeline {
                     docker tag \
                       followupfinder-ai:${BUILD_NUMBER} \
                       localhost:5000/followupfinder-ai:${BUILD_NUMBER}
+                      
+                    docker tag \
+                      followupfinder-ai:${BUILD_NUMBER} \
+                      localhost:5000/followupfinder-ai:latest
                 '''
             }
         }
@@ -40,6 +49,9 @@ pipeline {
                 sh '''
                     docker push \
                       localhost:5000/followupfinder-ai:${BUILD_NUMBER}
+                      
+                    docker push \
+                      localhost:5000/followupfinder-ai:latest
                 '''
             }
         }
