@@ -8,9 +8,8 @@ pipeline {
                 sh '''
                     docker run --rm \
                       -v "$WORKSPACE/ai:/app" \
-                      -w /app \
                       python:3.11-slim \
-                      sh -c "pip install --no-cache-dir -r requirements.txt -r service-requirements.txt pytest && python -m pytest tests/"
+                      sh -c "cd /app && pip install --no-cache-dir -r /app/requirements.txt -r /app/service-requirements.txt pytest && python -m pytest /app/tests/"
                 '''
             }
         }
