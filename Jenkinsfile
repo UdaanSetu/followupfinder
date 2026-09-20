@@ -62,6 +62,34 @@ EOF
                 '''
             }
         }
+
+        stage('GitOps Commit') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'github-followupfinder', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    sh '''
+                        # Configure Git specifically for this automated commit
+                        git config user.name "Jenkins CI"
+                        git config user.email "jenkins@localhost"
+
+                        # Safely update ONLY the image tag in values.yaml
+                        sed -i "s/^  tag: .*/  tag: \\"${BUILD_NUMBER}\\"/" deployment/helm/followupfinder-ai/values.yaml
+
+                        # Only commit and push if there are actual changes
+                        if git diff --exit-code deployment/helm/followupfinder-ai/values.yaml > /dev/null; then
+                            echo "values.yaml already has the correct tag. No commit necessary."
+                        else
+                            git add deployment/helm/followupfinder-ai/values.yaml
+                            git commit -m "Update AI image tag to ${BUILD_NUMBER} [skip ci]"
+                            
+                            # Push safely to feature/backend using HTTPS credentials
+                            set +x # Ensure secrets are not echoed in the log
+                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/UdaanSetu/followupfinder.git HEAD:feature/backend
+                            set -x
+                        fi
+                    '''
+                }
+            }
+        }
     }
 
     post {
