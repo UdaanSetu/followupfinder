@@ -3,19 +3,15 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('AI Tests') {
             steps {
-                dir('ai') {
-                    sh '''
-                        python -m pytest tests/
-                    '''
-                }
+                sh '''
+                    docker run --rm \
+                      -v "$WORKSPACE/ai:/app" \
+                      -w /app \
+                      python:3.11-slim \
+                      sh -c "pip install --no-cache-dir -r requirements.txt -r service-requirements.txt && python -m pytest tests/"
+                '''
             }
         }
 
