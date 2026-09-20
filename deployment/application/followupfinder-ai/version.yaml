@@ -1,0 +1,7 @@
+application:
+  name: followupfinder-ai
+  version: "5"
+
+image:
+  repository: followupfinder-registry:5000/followupfinder-ai
+  tag: "5"

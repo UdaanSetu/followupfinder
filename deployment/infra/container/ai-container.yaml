@@ -1,0 +1,11 @@
+container:
+  name: followupfinder-ai
+
+  port: 8000
+
+  image:
+    repository: followupfinder-registry:5000/followupfinder-ai
+
+  runtime:
+    device: cpu
+    workers: 1
