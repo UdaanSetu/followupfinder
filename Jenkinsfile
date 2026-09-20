@@ -10,7 +10,7 @@ pipeline {
                       -v "$WORKSPACE/ai:/app" \
                       -w /app \
                       python:3.11-slim \
-                      sh -c "pip install --no-cache-dir -r requirements.txt -r service-requirements.txt && python -m pytest tests/"
+                      sh -c "pip install --no-cache-dir -r requirements.txt -r service-requirements.txt pytest && python -m pytest tests/"
                 '''
             }
         }
