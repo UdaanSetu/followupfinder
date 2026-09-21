@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: followupfinder-registry:5000/followupfinder-ai
-  tag: "7"
+  tag: "8"
   pullPolicy: Always
 
 service:
