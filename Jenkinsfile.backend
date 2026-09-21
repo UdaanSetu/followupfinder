@@ -1,0 +1,95 @@
+pipeline {
+    agent any
+
+    environment {
+        SERVICE_NAME = 'backend'
+        IMAGE_NAME = "followupfinder-registry:5000/followupfinder-backend"
+        HELM_DIR = "deployment/helm/followupfinder-backend"
+        // Dynamically use the current branch being built, falling back to feature/backend
+        GITOPS_BRANCH = "${env.GIT_BRANCH ?: env.BRANCH_NAME ?: 'feature/backend'}"
+    }
+
+    stages {
+        stage('Validate Pre-requisites') {
+            steps {
+                sh '''
+                    if [ ! -f backend/Dockerfile ]; then
+                        echo "ERROR: backend/Dockerfile does not exist yet."
+                        echo "Backend is not implemented. Failing the pipeline cleanly."
+                        exit 1
+                    fi
+                    if [ ! -d "${HELM_DIR}" ]; then
+                        echo "ERROR: Helm chart ${HELM_DIR} does not exist yet."
+                        echo "Backend deployment is not implemented. Failing the pipeline cleanly."
+                        exit 1
+                    fi
+                '''
+            }
+        }
+
+        stage('Backend Tests') {
+            steps {
+                sh '''
+                    echo "Running backend tests..."
+                    # TODO: add pytest/etc when implemented
+                '''
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh '''
+                    docker build \
+                      -f backend/Dockerfile \
+                      -t followupfinder-backend:${BUILD_NUMBER} \
+                      backend
+                '''
+            }
+        }
+
+        stage('Docker Tag & Push') {
+            steps {
+                sh '''
+                    docker tag followupfinder-backend:${BUILD_NUMBER} ${IMAGE_NAME}:${BUILD_NUMBER}
+                    docker push ${IMAGE_NAME}:${BUILD_NUMBER}
+                '''
+            }
+        }
+
+        stage('GitOps Commit') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'github-followupfinder', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                    sh '''
+                        git config user.name "Jenkins CI"
+                        git config user.email "jenkins@localhost"
+
+                        # Safely update ONLY the backend image tag in its OWN helm chart
+                        sed -i "s/^  tag: .*/  tag: \\"${BUILD_NUMBER}\\"/" ${HELM_DIR}/values.yaml
+
+                        if git diff --exit-code ${HELM_DIR}/values.yaml > /dev/null; then
+                            echo "values.yaml already has the correct tag. No commit necessary."
+                        else
+                            git add ${HELM_DIR}/values.yaml
+                            git commit -m "Update Backend image tag to ${BUILD_NUMBER} [skip ci]"
+                            
+                            set +x
+                            # Strip the "origin/" prefix if env.GIT_BRANCH includes it
+                            TARGET_BRANCH=$(echo "${GITOPS_BRANCH}" | sed 's|^origin/||')
+                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/UdaanSetu/followupfinder.git HEAD:${TARGET_BRANCH}
+                            set -x
+                        fi
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "FollowUpFinder Backend CI completed successfully. Image version: ${BUILD_NUMBER}"
+        }
+        failure {
+            echo 'FollowUpFinder Backend CI failed. See logs for details.'
+        }
+    }
+}
