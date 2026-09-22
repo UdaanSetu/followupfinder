@@ -8,7 +8,7 @@ pipeline {
               containers:
               - name: docker
                 image: docker:24-dind
-                args: ["--insecure-registry=followupfinder-registry.jenkins.svc.cluster.local:5000"]
+                args: ["--insecure-registry=followupfinder-registry.jenkins.svc.cluster.local:5000", "--mtu=1350"]
                 securityContext:
                   privileged: true
               - name: jnlp
