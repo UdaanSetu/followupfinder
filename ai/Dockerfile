@@ -1,8 +1,8 @@
-FROM pytorch/pytorch:2.4.0-cuda12.1-cudnn9-runtime
+FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    FOLLOWUPFINDER_DEVICE=cuda \
+    FOLLOWUPFINDER_DEVICE=cpu \
     FOLLOWUPFINDER_BASE_MODEL_PATH=/models/Qwen3-0.6B \
     FOLLOWUPFINDER_ADAPTER_PATH=/models/lora-round3
 
@@ -11,8 +11,7 @@ WORKDIR /app
 COPY requirements.txt /app/ai/requirements.txt
 COPY service-requirements.txt /app/ai/service-requirements.txt
 
-# PyTorch is already installed in this base image, so pip will skip the 3GB download
-RUN pip install --no-cache-dir --default-timeout=1000 \
+RUN pip install --no-cache-dir --default-timeout=1000 --extra-index-url https://download.pytorch.org/whl/cpu \
     -r /app/ai/requirements.txt \
     -r /app/ai/service-requirements.txt
 
