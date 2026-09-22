@@ -13,8 +13,8 @@ service:
 ai:
   device: cpu
   baseModelPath: /models/Qwen3-0.6B
-  adapterPath: /models/lora-round3
+  adapterPath: /models/lora-round4
 
 models:
   baseModelHostPath: /models/Qwen3-0.6B
-  adapterHostPath: /models/lora-round3
+  adapterHostPath: /models/lora-round4
