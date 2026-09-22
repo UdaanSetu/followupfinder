@@ -12,7 +12,7 @@ COPY requirements.txt /app/ai/requirements.txt
 COPY service-requirements.txt /app/ai/service-requirements.txt
 
 # PyTorch is already installed in this base image, so pip will skip the 3GB download
-RUN pip install --no-cache-dir \
+RUN pip install --no-cache-dir --default-timeout=1000 \
     -r /app/ai/requirements.txt \
     -r /app/ai/service-requirements.txt
 
