@@ -111,9 +111,9 @@ INNER_EOF
                             git add deployment/helm/followupfinder-ai/values.yaml
                             git commit -m "Update AI image tag to ${BUILD_NUMBER} [skip ci]"
                             
-                            # Push safely to feature/backend using HTTPS credentials
+                            # Push safely to feature/setup-infrastructure using HTTPS credentials
                             set +x # Ensure secrets are not echoed in the log
-                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/UdaanSetu/followupfinder.git HEAD:feature/backend
+                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/UdaanSetu/followupfinder.git HEAD:feature/setup-infrastructure
                             set -x
                         fi
                     '''
