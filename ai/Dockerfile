@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM pytorch/pytorch:2.4.0-cuda12.1-cudnn9-runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -11,7 +11,8 @@ WORKDIR /app
 COPY requirements.txt /app/ai/requirements.txt
 COPY service-requirements.txt /app/ai/service-requirements.txt
 
-RUN pip install --no-cache-dir --default-timeout=1000 \
+# PyTorch is already installed in this base image, so pip will skip the 3GB download
+RUN pip install --no-cache-dir \
     -r /app/ai/requirements.txt \
     -r /app/ai/service-requirements.txt
 
