@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: followupfinder-registry
+  namespace: jenkins
+  labels:
+    app: followupfinder-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: followupfinder-registry
+  template:
+    metadata:
+      labels:
+        app: followupfinder-registry
+    spec:
+      containers:
+      - name: registry
+        image: registry:2
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: followupfinder-registry
+  namespace: jenkins
+spec:
+  selector:
+    app: followupfinder-registry
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

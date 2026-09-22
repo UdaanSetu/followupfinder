@@ -1,65 +1,95 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            yaml '''
+            apiVersion: v1
+            kind: Pod
+            spec:
+              containers:
+              - name: docker
+                image: docker:24-dind
+                args: ["--insecure-registry=followupfinder-registry.jenkins.svc.cluster.local:5000"]
+                securityContext:
+                  privileged: true
+              - name: jnlp
+                image: jenkins/inbound-agent:alpine
+                env:
+                - name: DOCKER_HOST
+                  value: tcp://localhost:2375
+            '''
+        }
+    }
 
     stages {
 
         stage('AI Tests') {
             steps {
-                sh '''
-                    cp -r ai ai_test_build
-                    rm -f ai_test_build/.dockerignore
-                    cat << 'EOF' > ai_test_build/Dockerfile.test
+                container('docker') {
+                    sh '''
+                        apk add --no-cache git
+                        cp -r ai ai_test_build
+                        rm -f ai_test_build/.dockerignore
+                        cat << 'INNER_EOF' > ai_test_build/Dockerfile.test
 FROM python:3.11-slim
 WORKDIR /app
 COPY . /app/ai
 RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu -r /app/ai/requirements.txt -r /app/ai/service-requirements.txt pytest
 CMD ["python", "-m", "pytest", "ai/tests/"]
-EOF
-                    docker build -f ai_test_build/Dockerfile.test -t followupfinder-ai-test:${BUILD_NUMBER} ai_test_build
-                    docker run --rm followupfinder-ai-test:${BUILD_NUMBER}
-                '''
+INNER_EOF
+                        docker build -f ai_test_build/Dockerfile.test -t followupfinder-ai-test:${BUILD_NUMBER} ai_test_build
+                        docker run --rm followupfinder-ai-test:${BUILD_NUMBER}
+                    '''
+                }
             }
             post {
                 always {
-                    sh 'rm -rf ai_test_build || true'
+                    container('docker') {
+                        sh 'rm -rf ai_test_build || true'
+                    }
                 }
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh '''
-                    docker build \
-                      -f ai/Dockerfile \
-                      -t followupfinder-ai:${BUILD_NUMBER} \
-                      ai
-                '''
+                container('docker') {
+                    sh '''
+                        docker build \
+                          -f ai/Dockerfile \
+                          -t followupfinder-ai:${BUILD_NUMBER} \
+                          ai
+                    '''
+                }
             }
         }
 
         stage('Docker Tag') {
             steps {
-                sh '''
-                    docker tag \
-                      followupfinder-ai:${BUILD_NUMBER} \
-                      localhost:5000/followupfinder-ai:${BUILD_NUMBER}
-                      
-                    docker tag \
-                      followupfinder-ai:${BUILD_NUMBER} \
-                      localhost:5000/followupfinder-ai:latest
-                '''
+                container('docker') {
+                    sh '''
+                        docker tag \
+                          followupfinder-ai:${BUILD_NUMBER} \
+                          followupfinder-registry.jenkins.svc.cluster.local:5000/followupfinder-ai:${BUILD_NUMBER}
+                          
+                        docker tag \
+                          followupfinder-ai:${BUILD_NUMBER} \
+                          followupfinder-registry.jenkins.svc.cluster.local:5000/followupfinder-ai:latest
+                    '''
+                }
             }
         }
 
         stage('Docker Push') {
             steps {
-                sh '''
-                    docker push \
-                      localhost:5000/followupfinder-ai:${BUILD_NUMBER}
-                      
-                    docker push \
-                      localhost:5000/followupfinder-ai:latest
-                '''
+                container('docker') {
+                    sh '''
+                        docker push \
+                          followupfinder-registry.jenkins.svc.cluster.local:5000/followupfinder-ai:${BUILD_NUMBER}
+                          
+                        docker push \
+                          followupfinder-registry.jenkins.svc.cluster.local:5000/followupfinder-ai:latest
+                    '''
+                }
             }
         }
 
