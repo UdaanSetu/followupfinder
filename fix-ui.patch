@@ -1,0 +1,12 @@
+spec:
+  template:
+    spec:
+      containers:
+      - name: registry-ui
+        env:
+        - name: REGISTRY_TITLE
+          value: FollowupFinder Registry
+        - name: REGISTRY_URL
+          value: http://localhost:5000
+        - name: DELETE_IMAGES
+          value: "true"
