@@ -8,7 +8,7 @@ pipeline {
               containers:
               - name: docker
                 image: docker:24-dind
-                args: ["--insecure-registry=followupfinder-registry.jenkins.svc.cluster.local:5000", "--mtu=1350"]
+                args: ["--mtu=1350"]
                 securityContext:
                   privileged: true
               - name: jnlp
@@ -18,6 +18,10 @@ pipeline {
                   value: tcp://localhost:2375
             '''
         }
+    }
+    
+    triggers {
+        pollSCM('* * * * *')
     }
 
     stages {
@@ -69,11 +73,11 @@ INNER_EOF
                     sh '''
                         docker tag \
                           followupfinder-ai:${BUILD_NUMBER} \
-                          followupfinder-registry.jenkins.svc.cluster.local:5000/followupfinder-ai:${BUILD_NUMBER}
+                          aditya1961/followupfinder-ai:${BUILD_NUMBER}
                           
                         docker tag \
                           followupfinder-ai:${BUILD_NUMBER} \
-                          followupfinder-registry.jenkins.svc.cluster.local:5000/followupfinder-ai:latest
+                          aditya1961/followupfinder-ai:latest
                     '''
                 }
             }
@@ -83,11 +87,10 @@ INNER_EOF
             steps {
                 container('docker') {
                     sh '''
-                        docker push \
-                          followupfinder-registry.jenkins.svc.cluster.local:5000/followupfinder-ai:${BUILD_NUMBER}
-                          
-                        docker push \
-                          followupfinder-registry.jenkins.svc.cluster.local:5000/followupfinder-ai:latest
+                        docker login -u aditya1961 -p dckr_pat_t-JPhOv_za2GUhKGAK7LqJRzbDg
+                        
+                        docker push aditya1961/followupfinder-ai:${BUILD_NUMBER}
+                        docker push aditya1961/followupfinder-ai:latest
                     '''
                 }
             }
