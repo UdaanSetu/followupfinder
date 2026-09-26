@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: followupfinder-registry.jenkins.svc.cluster.local:5000/followupfinder-ai
+  repository: aditya1961/followupfinder-ai
   tag: "16"
   pullPolicy: Always
 
