@@ -32,11 +32,11 @@ spec:
 
           volumeMounts:
             - name: qwen-model
-              mountPath: /models/Qwen3-0.6B
+              mountPath: {{ .Values.ai.baseModelPath }}
               readOnly: true
 
             - name: lora-adapter
-              mountPath: /models/lora-round3
+              mountPath: {{ .Values.ai.adapterPath }}
               readOnly: true
 
       volumes:
