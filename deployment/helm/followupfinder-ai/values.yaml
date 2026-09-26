@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: aditya1961/followupfinder-ai
-  tag: "16"
+  tag: "17"
   pullPolicy: Always
 
 service:
