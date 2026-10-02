@@ -1,98 +1,53 @@
 pipeline {
-    agent {
-        kubernetes {
-            yaml '''
-            apiVersion: v1
-            kind: Pod
-            spec:
-              containers:
-              - name: docker
-                image: docker:24-dind
-                args: ["--mtu=1350"]
-                securityContext:
-                  privileged: true
-              - name: jnlp
-                image: jenkins/inbound-agent:alpine
-                env:
-                - name: DOCKER_HOST
-                  value: tcp://localhost:2375
-            '''
-        }
-    }
+    agent any
     
-    triggers {
-        pollSCM('* * * * *')
+    environment {
+        // Dynamically use the current branch being built
+        GITOPS_BRANCH = "${env.GIT_BRANCH ?: env.BRANCH_NAME ?: 'feature/setup-infrastructure'}"
     }
 
     stages {
 
         stage('AI Tests') {
             steps {
-                container('docker') {
-                    sh '''
-                        apk add --no-cache git
-                        cp -r ai ai_test_build
-                        rm -f ai_test_build/.dockerignore
-                        cat << 'INNER_EOF' > ai_test_build/Dockerfile.test
+                sh '''
+                    cp -r ai ai_test_build
+                    rm -f ai_test_build/.dockerignore
+                    cat << 'INNER_EOF' > ai_test_build/Dockerfile.test
 FROM python:3.11-slim
 WORKDIR /app
 COPY . /app/ai
 RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu -r /app/ai/requirements.txt -r /app/ai/service-requirements.txt pytest
 CMD ["python", "-m", "pytest", "ai/tests/"]
 INNER_EOF
-                        docker build -f ai_test_build/Dockerfile.test -t followupfinder-ai-test:${BUILD_NUMBER} ai_test_build
-                        docker run --rm followupfinder-ai-test:${BUILD_NUMBER}
-                    '''
-                }
+                    docker build -f ai_test_build/Dockerfile.test -t followupfinder-ai-test:${BUILD_NUMBER} ai_test_build
+                    docker run --rm followupfinder-ai-test:${BUILD_NUMBER}
+                '''
             }
             post {
                 always {
-                    container('docker') {
-                        sh 'rm -rf ai_test_build || true'
-                    }
+                    sh 'rm -rf ai_test_build || true'
                 }
             }
         }
 
         stage('Docker Build') {
             steps {
-                container('docker') {
-                    sh '''
-                        docker build \
-                          -f ai/Dockerfile \
-                          -t followupfinder-ai:${BUILD_NUMBER} \
-                          ai
-                    '''
-                }
+                sh '''
+                    docker build \
+                      -f ai/Dockerfile \
+                      -t followupfinder-ai:${BUILD_NUMBER} \
+                      ai
+                '''
             }
         }
 
-        stage('Docker Tag') {
+        stage('Docker Tag & Push') {
             steps {
-                container('docker') {
-                    sh '''
-                        docker tag \
-                          followupfinder-ai:${BUILD_NUMBER} \
-                          aditya1961/followupfinder-ai:${BUILD_NUMBER}
-                          
-                        docker tag \
-                          followupfinder-ai:${BUILD_NUMBER} \
-                          aditya1961/followupfinder-ai:latest
-                    '''
-                }
-            }
-        }
-
-        stage('Docker Push') {
-            steps {
-                container('docker') {
-                    sh '''
-                        docker login -u aditya1961 -p dckr_pat_t-JPhOv_za2GUhKGAK7LqJRzbDg
-                        
-                        docker push aditya1961/followupfinder-ai:${BUILD_NUMBER}
-                        docker push aditya1961/followupfinder-ai:latest
-                    '''
-                }
+                sh '''
+                    docker tag followupfinder-ai:${BUILD_NUMBER} followupfinder-registry:5000/followupfinder-ai:${BUILD_NUMBER}
+                    docker push followupfinder-registry:5000/followupfinder-ai:${BUILD_NUMBER}
+                '''
             }
         }
 
@@ -114,9 +69,9 @@ INNER_EOF
                             git add deployment/helm/followupfinder-ai/values.yaml
                             git commit -m "Update AI image tag to ${BUILD_NUMBER} [skip ci]"
                             
-                            # Push safely to feature/setup-infrastructure using HTTPS credentials
                             set +x # Ensure secrets are not echoed in the log
-                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/UdaanSetu/followupfinder.git HEAD:feature/setup-infrastructure
+                            TARGET_BRANCH=$(echo "${GITOPS_BRANCH}" | sed 's|^origin/||')
+                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/UdaanSetu/followupfinder.git HEAD:${TARGET_BRANCH}
                             set -x
                         fi
                     '''

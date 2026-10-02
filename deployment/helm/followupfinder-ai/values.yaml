@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: aditya1961/followupfinder-ai
+  repository: followupfinder-registry:5000/followupfinder-ai
   tag: "29"
   pullPolicy: Always
 
