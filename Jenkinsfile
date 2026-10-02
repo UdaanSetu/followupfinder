@@ -4,6 +4,7 @@ pipeline {
     environment {
         // Dynamically use the current branch being built
         GITOPS_BRANCH = "${env.GIT_BRANCH ?: env.BRANCH_NAME ?: 'feature/setup-infrastructure'}"
+        DOCKER_REPO = "aditya1961/followupfinder-ai"
     }
 
     stages {
@@ -36,18 +37,23 @@ INNER_EOF
                 sh '''
                     docker build \
                       -f ai/Dockerfile \
-                      -t followupfinder-ai:${BUILD_NUMBER} \
+                      -t ${DOCKER_REPO}:${BUILD_NUMBER} \
                       ai
                 '''
             }
         }
 
-        stage('Docker Tag & Push') {
+        stage('Docker Hub Push') {
             steps {
-                sh '''
-                    docker tag followupfinder-ai:${BUILD_NUMBER} followupfinder-registry:5000/followupfinder-ai:${BUILD_NUMBER}
-                    docker push followupfinder-registry:5000/followupfinder-ai:${BUILD_NUMBER}
-                '''
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-followupfinder', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    sh '''
+                        set +x
+                        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+                        set -x
+                        
+                        docker push ${DOCKER_REPO}:${BUILD_NUMBER}
+                    '''
+                }
             }
         }
 

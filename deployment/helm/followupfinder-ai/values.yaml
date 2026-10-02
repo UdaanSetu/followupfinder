@@ -1,9 +1,9 @@
 replicaCount: 1
 
 image:
-  repository: followupfinder-registry:5000/followupfinder-ai
+  repository: docker.io/aditya1961/followupfinder-ai
   tag: "29"
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
@@ -13,8 +13,8 @@ service:
 ai:
   device: cpu
   baseModelPath: /models/Qwen3-0.6B
-  adapterPath: /models/lora-round4
+  adapterPath: /models/lora-round3
 
 models:
   baseModelHostPath: /models/Qwen3-0.6B
-  adapterHostPath: /models/lora-round4
+  adapterHostPath: /models/lora-round3
