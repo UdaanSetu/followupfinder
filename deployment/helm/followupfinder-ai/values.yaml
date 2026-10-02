@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: docker.io/aditya1961/followupfinder-ai
-  tag: "29"
+  tag: "1"
   pullPolicy: IfNotPresent
 
 service:
