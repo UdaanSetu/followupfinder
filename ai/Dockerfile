@@ -11,7 +11,7 @@ WORKDIR /app
 COPY requirements.txt /app/ai/requirements.txt
 COPY service-requirements.txt /app/ai/service-requirements.txt
 
-RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu \
+RUN pip install --no-cache-dir --default-timeout=1000 --extra-index-url https://download.pytorch.org/whl/cpu \
     -r /app/ai/requirements.txt \
     -r /app/ai/service-requirements.txt
 

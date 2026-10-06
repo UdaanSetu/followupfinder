@@ -1,0 +1,4 @@
+registry:
+  type: local
+  host: localhost:5000
+  repository: followupfinder-ai

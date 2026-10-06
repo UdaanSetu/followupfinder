@@ -1,0 +1,14 @@
+spec:
+  template:
+    spec:
+      containers:
+      - name: registry
+        env:
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Origin
+          value: "['http://localhost:8084']"
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Methods
+          value: "['HEAD', 'GET', 'OPTIONS', 'DELETE']"
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Allow-Headers
+          value: "['Authorization', 'Accept', 'Cache-Control']"
+        - name: REGISTRY_HTTP_HEADERS_Access-Control-Expose-Headers
+          value: "['Docker-Content-Digest']"

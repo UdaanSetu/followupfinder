@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: followupfinder-ai-config
+  namespace: followupfinder
+
+data:
+  FOLLOWUPFINDER_DEVICE: "cpu"
+  FOLLOWUPFINDER_BASE_MODEL_PATH: "/models/Qwen3-0.6B"
+  FOLLOWUPFINDER_ADAPTER_PATH: "/models/lora-round3"

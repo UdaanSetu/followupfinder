@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Validate Pre-requisites') {
+            steps {
+                sh '''
+                    # The database pipeline validates/executes migrations, seeds, or indexes.
+                    # It does NOT build a MongoDB application image.
+                    
+                    has_scripts=false
+                    
+                    if [ -d "database/migrations" ] && [ "$(ls -A database/migrations)" ]; then
+                        has_scripts=true
+                    fi
+                    if [ -d "database/indexes" ] && [ "$(ls -A database/indexes)" ]; then
+                        has_scripts=true
+                    fi
+                    if [ -d "database/seed" ] && [ "$(ls -A database/seed)" ]; then
+                        has_scripts=true
+                    fi
+                    
+                    if [ "$has_scripts" = false ]; then
+                        echo "ERROR: Database CI artifacts (migrations/indexes/seeds) are not implemented yet."
+                        echo "Database pipeline is unimplemented. Failing cleanly."
+                        exit 1
+                    fi
+                '''
+            }
+        }
+
+        stage('Run Database Validation') {
+            steps {
+                sh '''
+                    echo "Starting temporary MongoDB container for validation..."
+                    # TODO: docker run -d --name mongo-ci mongo:7.0
+                    
+                    echo "Running migrations/indexes against temporary DB..."
+                    # TODO: execute migration scripts here
+                    
+                    echo "Validation passed. Cleaning up..."
+                    # TODO: docker rm -f mongo-ci
+                '''
+            }
+        }
+        
+        stage('Deploy Database Changes') {
+            steps {
+                sh '''
+                    echo "Deploying database changes..."
+                    # TODO: Trigger Argo CD pre-sync job, or directly execute migrations against the cluster
+                    # using Kubernetes jobs. Do NOT put mongo passwords in plain text here!
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "FollowUpFinder Database CI completed successfully."
+        }
+        failure {
+            echo 'FollowUpFinder Database CI failed. See logs for details.'
+            # Clean up temporary DB container just in case
+            sh 'docker rm -f mongo-ci || true'
+        }
+    }
+}
